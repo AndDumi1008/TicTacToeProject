@@ -1,1 +1,2 @@
-Hi there! This is my tic tac toe project. It is inspired and made after https://www.udemy.com/course/complete-python-bootcamp/
+Hi there! This is my Tic Tac Toe Game. It is inspired and made after https://www.udemy.com/course/complete-python-bootcamp/
+Wrote in Python Language
