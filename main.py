@@ -1,5 +1,5 @@
 import os
-clear = lambda : os.system('cls')
+clear = lambda: os.system('cls')
 
 
 def display_board(board):
@@ -22,7 +22,7 @@ def player_input():
     marker = ''
 
     while not (marker == 'X' or marker == 'O'):
-        marker = input("Player 1:" + " Please enter your mark ".upper() + "('X' or 'O'): ").upper()
+        marker = input("\n\nPlayer 1:" + " Please enter your mark ".upper() + "('X' or 'O'): ").upper()
 
     if marker == 'X':
         return ('X', 'O')
@@ -32,6 +32,7 @@ def player_input():
 
 
 def place_marker(board, marker, position):
+    os.system('cls')
     board[position] = marker
 
 
@@ -54,7 +55,7 @@ def choose_first():
 
 
 def space_check(board, position):
-    return board[position] == ' '
+    return board[position] == '1' or board[position] == '2' or board[position] == '3' or board[position] == '4' or board[position] == '5' or board[position] == '6' or board[position] == '7' or board[position] == '8' or board[position] == '9'
 
 
 def full_board_check(board):
@@ -74,22 +75,40 @@ def player_choice(board):
 def replay():
     return input('Do you want to play again? Enter Yes or No: ').lower().startswith('y')
 
+def logo():
+    print("\n        ##############  ####      ########          ##############       ######           ########   ")
+    print("        ##############  ####    ###########         ##############    ############      ###########  ")
+    print("             ####             ####       ###             ####        #####    #####   ####       ### ")
+    print("             ####       ####  ####                       ####       ####        ####  ####           ")
+    print("             ####       ####  ####                       ####       ################  ####           ")
+    print("             ####       ####  ####       ###             ####       ################  ####       ### ")
+    print("             ####       ####    ###########              ####       ####        ####    ###########  ")
+    print("             ####       ####     #########               ####       ####        ####     #########   ")
+
+    print("\n                                ##############      #######     ###########                          ")
+    print("                                ##############    ##########    ###########                          ")
+    print("                                     ####       ####      ####  ####                                 ")
+    print("                                     ####       ####      ####  #######                              ")
+    print("                                     ####       ####      ####  #######                              ")
+    print("                                     ####       ####      ####  ####                                 ")
+    print("                                     ####         ##########    ###########                          ")
+    print("                                     ####          ########     ###########                          ")
 
 
 
 
-
-print('Welcome to TicTacToe!')
+logo()
 while True:
 
-    playBoard = [' '] * 10
+    playBoard = ['#', '1', '2', '3', '4', '5', '6', '7', '8', '9']
     player1_marker, player2_marker = player_input()
     turn = choose_first()
     print(turn + ' will go first.')
 
-    play_game = input('Are you ready to play? [Y/N] ')
+    play_game = input('\nAre you ready to play? [Y/N] ')
 
     if play_game.lower()[0] == 'y':
+        os.system('cls')
         game_on = True
     else:
         game_on = False
@@ -97,14 +116,13 @@ while True:
     while game_on:
         if turn == 'Player 1':
 
-
             display_board(playBoard)
             position = player_choice(playBoard)
             place_marker(playBoard, player1_marker, position)
 
             if win_check(playBoard, player1_marker):
                 display_board(playBoard)
-                print('Congratulations! You have WON the GAME!!!')
+                print('Congratulations! Player 1 have WON the GAME!!!')
                 game_on = False
 
             else:
@@ -121,7 +139,7 @@ while True:
 
             if win_check(playBoard, player2_marker):
                 display_board(playBoard)
-                print('Player 2 has won!')
+                print('Congratulations! Player 2 have WON the GAME!!!')
                 game_on = False
             else:
                 if full_board_check(playBoard):
